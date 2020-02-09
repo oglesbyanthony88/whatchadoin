@@ -3,9 +3,7 @@ class CreateNags < ActiveRecord::Migration[5.2]
     create_table :nags do |t|
       t.text :content
       t.datetime :published_at
-      t.belongs_to :admin, foreign_key: true
       t.belongs_to :user, foreign_key: true
-      t.belongs_to :nagfeed, foreign_key: true
 
       t.timestamps
     end

@@ -4,21 +4,14 @@ Will prompt a user to input a string describing what they are working on current
 
 Models:
 
-Admin
-	admin_id (can this be used as a user_id as well?)
-	name
-	email
-	password
-belongs_to :group
-
 User
 	user_id
 	name
 	email
 	password
-belongs_to :group
+	is_admin
 has_many :nags
-has_many :tasks
+has_many :tasks, through admin
 
 Task
 	task_id
@@ -73,6 +66,8 @@ TaskFeed
 		tasks_due_date
 has_many :tasks, through admin
 belongs_to :group
+
+
 
 
 
