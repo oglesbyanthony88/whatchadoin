@@ -1,3 +1,4 @@
 class Nagfeed < ApplicationRecord
-  belongs_to :group
+	has_many :nags, through: :users
+	belongs_to :group
 end
