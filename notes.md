@@ -40,6 +40,7 @@ Nag
 	user.name
 	content
 	published_at
+belongs_to :admin
 belongs_to :user
 belongs_to :nagfeed
 
@@ -62,6 +63,7 @@ NagFeed
 		nags_content
 		nags_published_at
 has_many :nags, through: :users
+belongs_to :group
 
 TaskFeed
 	group_id
@@ -71,7 +73,7 @@ TaskFeed
 		tasks_content
 		tasks_due_date
 has_many :tasks, through admin
-
+belongs_to :group
 
 
 

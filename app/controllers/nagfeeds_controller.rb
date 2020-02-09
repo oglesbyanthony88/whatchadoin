@@ -1,0 +1,2 @@
+class NagfeedsController < ApplicationController
+end

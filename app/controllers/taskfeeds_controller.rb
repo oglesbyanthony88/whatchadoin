@@ -1,0 +1,2 @@
+class TaskfeedsController < ApplicationController
+end

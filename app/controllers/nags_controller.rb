@@ -1,0 +1,2 @@
+class NagsController < ApplicationController
+end

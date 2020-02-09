@@ -1,0 +1,2 @@
+module NagsHelper
+end
