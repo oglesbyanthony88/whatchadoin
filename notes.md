@@ -19,7 +19,6 @@ User
 belongs_to :group
 has_many :nags
 has_many :tasks
-has_many :nags, through: :feed
 
 Task
 	task_id
