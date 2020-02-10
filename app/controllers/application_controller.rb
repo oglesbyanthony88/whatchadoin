@@ -2,7 +2,7 @@ class ApplicationController < ActionController::Base
 
 
 	#gives views access to methods
-	helper_method :current_user, :logged_in?
+	helper_method :current_user, :logged_in?, :is_admin?
 
  private
 
@@ -18,5 +18,9 @@ class ApplicationController < ActionController::Base
 	def redirect_if_not_logged_in
 		redirect_to '/' if !logged_in?
 	end
+	#Checks if user is_admin
+	def is_admin?
+    logged_in? ? current_user.is_admin : false
+  end
 
 end
