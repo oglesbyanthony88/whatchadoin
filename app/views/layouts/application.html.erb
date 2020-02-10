@@ -27,10 +27,7 @@
   <div id="navbarBasicExample" class="navbar-menu">
     <div class="navbar-start">
       
-
-      <a class="navbar-item">
-        Home
-      </a>
+      <%= link_to("Home", root_path, :class => "navbar-item") %>
 
       <div class="navbar-item has-dropdown is-hoverable">
         <a class="navbar-link">
@@ -38,12 +35,12 @@
         </a>
 
         <div class="navbar-dropdown">
-          <a class="navbar-item">
-            About
-          </a>
-          <a class="navbar-item">
-            Jobs
-          </a>
+          <% if logged_in? %>
+          <%= link_to("New Nag", new_nag_path, :class => "navbar-item") %>
+            <% if is_admin? %>
+          <%= link_to("New Task", new_task_path, :class => "navbar-item") %>
+            <% end %>
+          <% end %>
           <a class="navbar-item">
             Contact
           </a>

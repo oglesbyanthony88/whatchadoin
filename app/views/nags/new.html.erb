@@ -1,1 +1,10 @@
-<h1> New Post </h1>
+<h1> New Nag </h1> <br> <br>
+
+<%= form_for(@nag) do |f| %>
+
+<%= f.label "WhatchaDoin?" %> <br> <br>
+<%= f.text_area :content, :cols => 90, :rows => 6 %>  <br>
+
+<%= f.submit "Submit" %>
+
+<% end %>
