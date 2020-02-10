@@ -1,1 +1,9 @@
-<h1> Index </h1>
+<h1> User Nags </h1>
+
+<% if @posts.blank? %>
+
+    <h2>No Nags yet. Write a nag <%= link_to "here", new_nag_path%></h2>
+
+<% else %>
+  <%= render partial: "nags", locals: {nags: @nags} %>
+<% end %>
