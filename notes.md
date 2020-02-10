@@ -47,25 +47,29 @@ Group
 has_one :admin
 has_many :users
 
-NagFeed
-	group_id
-	group_name
-	nag_ids (multiple)
-		nags_user_name
-		nags_content
-		nags_published_at
-has_many :nags, through: :users
-belongs_to :group
+<!-- class Group < ApplicationRecord
+	has_many :users, through: :tasks
+	belongs_to :admin, class_name: "User"
+end
 
-TaskFeed
-	group_id
-	group_name
-	task_ids (multiple)
-		tasks_user_name
-		tasks_content
-		tasks_due_date
-has_many :tasks, through admin
-belongs_to :group
+class User < ApplicationRecord
+	has_many :tasks
+	has_many :nags
+	has_many :groups through: :tasks
+	has_many :admin_groups, foriegn_key: "admin_id", class_name: "Group"
+end
+
+class Task < ApplicationRecord
+	belongs_to :user, source: :admin_id
+	belongs_to :user
+	belongs_to :group
+	has_many :nags, through: :users
+end
+
+class Nag < ApplicationRecord
+	belongs_to :user
+	belongs_to :task
+end -->
 
 
 

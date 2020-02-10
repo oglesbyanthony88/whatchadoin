@@ -10,44 +10,49 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_02_09_185256) do
+ActiveRecord::Schema.define(version: 2020_02_10_214925) do
 
   create_table "groups", force: :cascade do |t|
-    t.string "name"
+    t.string "title"
+    t.integer "user_id"
+    t.integer "admin_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-  end
-
-  create_table "nagfeeds", force: :cascade do |t|
-    t.integer "group_id"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.index ["group_id"], name: "index_nagfeeds_on_group_id"
+    t.index ["admin_id"], name: "index_groups_on_admin_id"
+    t.index ["user_id"], name: "index_groups_on_user_id"
   end
 
   create_table "nags", force: :cascade do |t|
     t.text "content"
     t.datetime "published_at"
     t.integer "user_id"
+    t.integer "task_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.index ["task_id"], name: "index_nags_on_task_id"
     t.index ["user_id"], name: "index_nags_on_user_id"
-  end
-
-  create_table "taskfeeds", force: :cascade do |t|
-    t.integer "group_id"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.index ["group_id"], name: "index_taskfeeds_on_group_id"
   end
 
   create_table "tasks", force: :cascade do |t|
     t.text "content"
-    t.datetime "duedate"
+    t.string "duedate"
+    t.integer "admin_id"
     t.integer "user_id"
+    t.integer "group_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.index ["admin_id"], name: "index_tasks_on_admin_id"
+    t.index ["group_id"], name: "index_tasks_on_group_id"
     t.index ["user_id"], name: "index_tasks_on_user_id"
+  end
+
+  create_table "teams", id: false, force: :cascade do |t|
+    t.integer "user_id"
+    t.integer "group_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["group_id"], name: "index_teams_on_group_id"
+    t.index ["user_id"], name: "index_teams_on_user_id"
   end
 
   create_table "users", force: :cascade do |t|

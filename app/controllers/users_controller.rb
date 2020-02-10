@@ -28,4 +28,5 @@ class UsersController < ApplicationController
 		params.require(:user).permit(:name, :email, :password, :is_admin)
 	end
 
+
 end

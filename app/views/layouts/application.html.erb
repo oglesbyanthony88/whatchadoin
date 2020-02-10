@@ -35,12 +35,13 @@
         </a>
 
         <div class="navbar-dropdown">
-          <% if logged_in? %>
+        <% if logged_in? && is_admin? %>
           <%= link_to("New Nag", new_nag_path, :class => "navbar-item") %>
-            <% if is_admin? %>
           <%= link_to("New Task", new_task_path, :class => "navbar-item") %>
-            <% end %>
-          <% end %>
+          <%= link_to("New Group", new_group_path, :class => "navbar-item") %>
+        <% elsif logged_in? && !is_admin? %>
+          <%= link_to("New Nag", new_nag_path, :class => "navbar-item") %>
+        <% else %>
           <a class="navbar-item">
             Contact
           </a>
@@ -48,6 +49,8 @@
           <a class="navbar-item">
             Report an issue
           </a>
+          <% end %>
+
         </div>
       </div>
     </div>

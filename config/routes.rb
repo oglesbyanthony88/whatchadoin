@@ -10,8 +10,6 @@ Rails.application.routes.draw do
   delete '/logout' => 'sessions#destroy'
 
 
-  resources :taskfeeds
-  resources :nagfeeds
   resources :groups
   resources :nags
   resources :tasks

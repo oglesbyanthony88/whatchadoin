@@ -12,7 +12,7 @@ class ApplicationController < ActionController::Base
 	end
 	#Asks if there is a user loggind in
 	def logged_in?
-		!!session[:user_id]
+		!!current_user
 	end
 	#If not logged in redirects to root
 	def redirect_if_not_logged_in
@@ -22,5 +22,9 @@ class ApplicationController < ActionController::Base
 	def is_admin?
     logged_in? ? current_user.is_admin : false
   end
+
+  def current_admin_id
+  	
+
 
 end
