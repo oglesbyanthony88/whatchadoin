@@ -1,9 +1,11 @@
 class UsersController < ApplicationController
 
+	#sets up new user
 	def new
 		@user = User.new
 	end
-
+	#if form saves creates new user, redirects to user path
+	#else redirects to new form
 	def create
 		@user = User.new(user_params)
 		if @user.save
@@ -13,7 +15,7 @@ class UsersController < ApplicationController
 			render :new
 		end
 	end
-
+	#sends user to show page if logged in
 	def show
 		redirect_if_not_logged_in
 		@user = User.find_by_id(params[:id])
