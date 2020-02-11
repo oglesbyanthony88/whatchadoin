@@ -11,7 +11,7 @@ class GroupsController < ApplicationController
 
 	def create
 		if current_user.is_admin?
-			@group = admin.groups.build(group_params)
+			@group = is_admin.groups.build(group_params)
 			binding.pry
 			if @group.save
 				redirect_to groups_path

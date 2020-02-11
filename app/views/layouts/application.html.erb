@@ -14,7 +14,7 @@
     <nav class="navbar" role="navigation" aria-label="main navigation">
   <div class="navbar-brand">
     
-      <img src="whatchadoin_logo.png" width="200" height="30">
+   <!--    <img src="whatchadoin_logo.png" width="200" height="30"> -->
     
 
     <a role="button" class="navbar-burger burger" aria-label="menu" aria-expanded="false" data-target="navbarBasicExample">
@@ -35,11 +35,12 @@
         </a>
 
         <div class="navbar-dropdown">
-        <% if logged_in? && is_admin? %>
+        <% if admin_logged_in?%>
+          <%= link_to("New User", new_user_path, :class => "navbar-item") %>
           <%= link_to("New Nag", new_nag_path, :class => "navbar-item") %>
           <%= link_to("New Task", new_task_path, :class => "navbar-item") %>
           <%= link_to("New Group", new_group_path, :class => "navbar-item") %>
-        <% elsif logged_in? && !is_admin? %>
+        <% elsif logged_in? %>
           <%= link_to("New Nag", new_nag_path, :class => "navbar-item") %>
         <% else %>
           <a class="navbar-item">
@@ -58,7 +59,7 @@
     <div class="navbar-end">
       <div class="navbar-item">
         <div class="buttons">
-          <% if logged_in? %>
+          <% if logged_in? || admin_logged_in?%>
           <%= link_to("Logout", logout_path, :class => "button is-light", :method => "delete") %>
           <%else%>
           <%= link_to("Sign Up", signup_path, :class => "button is-primary") %>

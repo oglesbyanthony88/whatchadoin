@@ -3,5 +3,5 @@ class User < ApplicationRecord
 	has_many :tasks
 	has_many :nags
 	has_many :groups, through: :tasks
-	has_many :admin_groups, foreign_key: "admin_id", class_name: "Group"
+	belongs_to :admin
 end

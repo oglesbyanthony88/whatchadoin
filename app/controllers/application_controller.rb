@@ -2,7 +2,7 @@ class ApplicationController < ActionController::Base
 
 
 	#gives views access to methods
-	helper_method :current_user, :logged_in?, :is_admin?
+	helper_method :current_user, :logged_in?, :is_admin?, :redirect_if_not_logged_in_admin, :admin_logged_in?, :current_admin
 
  private
 
@@ -23,7 +23,19 @@ class ApplicationController < ActionController::Base
     logged_in? ? current_user.is_admin : false
   end
 
-  def current_admin_id
+  def current_admin
+  	@current_admin ||= Admin.find_by_id(session[:admin_id]) if session[:admin_id]
+  end
+
+  def admin_logged_in?
+  	!!current_admin
+  end
+
+  def redirect_if_not_logged_in_admin
+  	redirect_to '/' if !admin_logged_in?
+  end
+
+  
   	
 
 

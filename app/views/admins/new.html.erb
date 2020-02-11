@@ -1,6 +1,8 @@
-<h1>Create User</h1>
+<h1>Admin Sign Up</h1>
 
-<%= form_for(@user) do |f| %>
+<h3><strong>Warning - This is an admin only sign up. DO NOT SIGN UP IF YOU ARE NOT PLANNIND ON RUNNING A TEAM</strong></h3>
+
+<%= form_for(@admin) do |f| %>
 
 <%= f.label :name %>
 <%= f.text_field :name%><br><br>
@@ -10,7 +12,6 @@
 
 <%= f.label :password %>
 <%= f.password_field :password%><br><br>
-
 
 <%= f.submit "Submit" %>
 

@@ -1,11 +1,17 @@
 Rails.application.routes.draw do
+
+  resources :admins
   root 'sessions#home'
 
-  get '/signup' => 'users#new'
+  get '/signup' => 'admins#new'
 
   #login
   get '/login' => 'sessions#new'
   post '/login' => 'sessions#create'
+
+  #admin login
+  get '/adminlogin' => 'sessions#new'
+  post '/adminlogin' => 'sessions#create_admin'
   #logout
   delete '/logout' => 'sessions#destroy'
 
