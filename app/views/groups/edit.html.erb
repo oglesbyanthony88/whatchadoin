@@ -1,5 +1,7 @@
 <h1>Edit New Group</h1>
 
+<%= flash[:message]  if flash[:message]%>
+
 <%= form_for(@group) do |f| %>
 
 <%= f.label "Group Name" %> <br> <br>
