@@ -14,7 +14,7 @@ class NagsController < ApplicationController
 			if @nag.save
 				redirect_to users_path(current_user)
 			else
-				render new_nags_path
+				render new_nag_path
 			end
 		elsif current_admin
 			@nag = current_admin.nags.build(nag_params)

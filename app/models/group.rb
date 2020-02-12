@@ -3,4 +3,6 @@ class Group < ApplicationRecord
 	has_many :tasks, dependent: :destroy
 	belongs_to :admin
 
+	validates :title, presence: :true
+
 end

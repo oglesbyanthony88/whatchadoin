@@ -4,4 +4,8 @@ class Admin < ApplicationRecord
 	has_many :tasks
 	has_many :nags
 	has_many :users
+
+	validates :name, :email, presence: true
+
+	
 end
