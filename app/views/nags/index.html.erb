@@ -1,9 +1,43 @@
-<h1> User Nags </h1>
+<h1>Your Nags</h1>
 
-<% if @posts.blank? %>
+<% if admin_logged_in? %>
 
-    <h2>No Nags yet. Write a nag <%= link_to "here", new_nag_path%></h2>
+	<% if current_admin.nags.blank? %>
+
+    <h2>No nags yet. Write a nag <%= link_to "here", new_nag_path%></h2>
+
+	<% else %>
+
+  <ul>
+		<% current_admin.nags.each do |nags| %>
+
+			<li><%= nags.content %> - <%= nags.created_at %> - <%= nags.admin.name %></li>
+
+			<li><%= link_to 'Edit Nag', edit_nag_path(nags.id) %></li>
+
+		<% end %>
+	</ul>
+
+	<% end %>
 
 <% else %>
-  <%= render partial: "nags", locals: {nags: @nags} %>
+
+	<% if current_user.nags.blank? %>
+
+    <h2>No nags yet. Write a nag <%= link_to "here", new_nag_path%></h2>
+
+	<% else %>
+  <ul>
+		<% current_user.nags.each do |nags| %>
+
+			<li><%= nags.content %> - <%= nags.created_at %> - <%= nags.user.name %></li>
+
+			<li><%= link_to 'Edit Nag', edit_nag_path(nags.id) %></li>
+
+		<% end %>
+	</ul>
+
+
+	<% end %>
+
 <% end %>

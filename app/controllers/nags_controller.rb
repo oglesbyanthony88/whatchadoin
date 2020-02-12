@@ -21,19 +21,36 @@ class NagsController < ApplicationController
 			if @nag.save
 				redirect_to admin_path(current_admin)
 			else
-				render new_nags_path
+				redirect_to new_nag_path
 			end
 		end
 	end
 
 	def index
-   @nags = current_user.nags.all
+		if current_admin
+    	@nags = current_admin.nags.all
+ 		else
+ 			@nags = current_user.nags.all
+ 		end
+  end
+
+  def edit
+    @nag = Nag.find(params[:id])
+  end
+
+  def update
+    @nag = Nag.find(params[:id])
+    if @nag.update(nag_params)
+      redirect_to '/nags'
+    else
+      render edit_nag_path(@nag)
+    end
   end
 
 	private
 
 	def nag_params
-		params.require(:nag).permit(:content)
+		params.require(:nag).permit(:content, :task_id)
 	end
 
 
