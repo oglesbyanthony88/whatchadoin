@@ -11,6 +11,7 @@ class SessionsController < ApplicationController
 	#finds user. if user found creates new session, redirects to user_path
 	#if not logged in displays error message, redirects to login_path
 	def create
+		#binding.pry
 		user = User.find_by(email: params[:user][:email])
 			if user && user.authenticate(params[:user][:password])
 				session[:user_id] = user.id
@@ -21,7 +22,7 @@ class SessionsController < ApplicationController
 			end
 	end
 
-		def create_admin
+	def admin_create
 		admin = Admin.find_by(email: params[:admin][:email])
 			if admin && admin.authenticate(params[:admin][:password])
 				session[:admin_id] = admin.id
@@ -31,7 +32,4 @@ class SessionsController < ApplicationController
 				redirect_to login_path
 			end
 	end
-
-
-
 end

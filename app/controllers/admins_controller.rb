@@ -22,6 +22,12 @@ class AdminsController < ApplicationController
 		redirect_to '/' if !@admin
 	end
 
+	def user_show
+		redirect_if_not_logged_in_admin
+		@admin = Admin.users.find_by_id(params[:id])
+		redirect_to '/' if !@admin
+	end
+
 	private
 
 	def admin_params
