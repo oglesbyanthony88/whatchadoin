@@ -32,9 +32,11 @@ ActiveRecord::Schema.define(version: 2020_02_11_153047) do
     t.text "content"
     t.datetime "published_at"
     t.integer "user_id"
+    t.integer "admin_id"
     t.integer "task_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.index ["admin_id"], name: "index_nags_on_admin_id"
     t.index ["task_id"], name: "index_nags_on_task_id"
     t.index ["user_id"], name: "index_nags_on_user_id"
   end

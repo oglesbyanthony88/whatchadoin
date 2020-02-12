@@ -64,7 +64,8 @@
           <%else%>
           <%= link_to("Sign Up", signup_path, :class => "button is-primary") %>
           
-          <%= link_to("Login", login_path, :class => "button is-light") %>
+          <%= link_to("Login As User", login_path, :class => "button is-light") %>
+          <%= link_to("Login As Admin", '/adminlogin', :class => "button is-dark") %>
           <% end %>
         </div>
       </div>

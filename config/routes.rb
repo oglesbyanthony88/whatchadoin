@@ -1,6 +1,5 @@
 Rails.application.routes.draw do
 
-  resources :admins
   root 'sessions#home'
 
   get '/signup' => 'admins#new'
@@ -10,12 +9,14 @@ Rails.application.routes.draw do
   post '/login' => 'sessions#create'
 
   #admin login
-  get '/adminlogin' => 'sessions#new'
-  post '/adminlogin' => 'sessions#create_admin'
+  get '/adminlogin' => 'sessions#new_admin'
+  post '/adminlogin' => 'sessions#admin_create'
+
   #logout
   delete '/logout' => 'sessions#destroy'
 
 
+  resources :admins
   resources :groups
   resources :nags
   resources :tasks
