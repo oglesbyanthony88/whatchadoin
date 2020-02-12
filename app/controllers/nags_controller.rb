@@ -1,5 +1,4 @@
 class NagsController < ApplicationController
-	before_action :redirect_if_not_logged_in #See App Controller method
 
 	#creates new nag
 	def new
@@ -10,12 +9,20 @@ class NagsController < ApplicationController
 	#Need to put a min character count on Nags!
 
 	def create
-		@nag = current_user.nags.build(nag_params)
-		if @nag.save
-			redirect_to nags_path
-		else
-			render :new
-			#binding.pry
+		if current_user
+			@nag = current_user.nags.build(nag_params)
+			if @nag.save
+				redirect_to users_path(current_user)
+			else
+				render new_nags_path
+			end
+		elsif current_admin
+			@nag = current_admin.nags.build(nag_params)
+			if @nag.save
+				redirect_to admin_path(current_admin)
+			else
+				render new_nags_path
+			end
 		end
 	end
 
