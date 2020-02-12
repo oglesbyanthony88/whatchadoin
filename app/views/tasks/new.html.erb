@@ -4,9 +4,20 @@
 
 <%= f.label "Create a New Task" %> <br> <br>
 <%= f.text_area :content, :cols => 90, :rows => 6 %>  <br>
-<%= f.label "When is this due? (mm/dd/yyy)" %>
+<%= f.label "When is this due? (mm/dd/yyyy)" %>
 <%= f.text_field :duedate %>
-<br>
+
+<br><br>
+
+<%= f.label "Group:" %>
+<%= f.collection_select(:group_id, Group.all, :id, :title) %>
+
+<br><br>
+
+<%= f.label "User:" %>
+<%= f.collection_select(:user_id, User.all, :id, :name) %>
+
+<br><br><br>
 
 <%= f.submit "Submit" %>
 

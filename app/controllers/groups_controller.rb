@@ -1,5 +1,5 @@
 class GroupsController < ApplicationController
-	before_action :redirect_if_not_logged_in #See App Controller method
+	before_action :redirect_if_not_logged_in_admin #See App Controller method
 
 	#creates new group
 	def new
@@ -10,8 +10,8 @@ class GroupsController < ApplicationController
 	#Need to put a min character count on groups!
 
 	def create
-		if current_user.is_admin?
-			@group = is_admin.groups.build(group_params)
+		if current_admin
+			@group = current_admin.groups.build(group_params)
 			binding.pry
 			if @group.save
 				redirect_to groups_path
@@ -25,7 +25,7 @@ class GroupsController < ApplicationController
 	end
 
 	def index
-   @groups = current_user.groups.all
+   @groups = current_admin.groups.all
   end
 
 	private
