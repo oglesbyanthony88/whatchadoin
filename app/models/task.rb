@@ -5,4 +5,6 @@ class Task < ApplicationRecord
 	has_many :nags, through: :users
 
 	validates :content, presence: :true
+
+	
 end
