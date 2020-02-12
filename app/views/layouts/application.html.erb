@@ -36,11 +36,13 @@
 
         <div class="navbar-dropdown">
         <% if admin_logged_in?%>
+          <%= link_to("Profile", admin_path(current_admin), :class => "navbar-item") %>
           <%= link_to("New User", new_user_path, :class => "navbar-item") %>
           <%= link_to("New Nag", new_nag_path, :class => "navbar-item") %>
           <%= link_to("New Task", new_task_path, :class => "navbar-item") %>
           <%= link_to("New Group", new_group_path, :class => "navbar-item") %>
         <% elsif logged_in? %>
+          <%= link_to("Profile", user_path(current_user), :class => "navbar-item") %>
           <%= link_to("New Nag", new_nag_path, :class => "navbar-item") %>
         <% else %>
           <a class="navbar-item">
