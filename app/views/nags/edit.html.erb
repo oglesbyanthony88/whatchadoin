@@ -11,6 +11,13 @@
 <%= f.collection_select(:task_id, current_admin.tasks.all, :id, :content) %>
 
 <%= f.submit "Submit" %>
+
+<div class="buttons">
+
+<%= link_to 'Delete', @nag, :class => "button is-dark", method: :delete, data: { confirm: 'Are You Sure?' } %>
+
+</div>
+
 <% end %>
 <% else %>
 
@@ -23,6 +30,12 @@
 <%= f.collection_select(:task_id, current_user.tasks.all, :id, :content) %>
 
 <%= f.submit "Submit" %>
+
+<div class="buttons">
+
+<%= link_to 'Delete', @nag, :class => "button is-dark", method: :delete, data: { confirm: 'Are You Sure?' } %>
+
+</div>
 
 <% end %>
 <% end %>
