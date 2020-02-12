@@ -23,6 +23,25 @@ class TasksController < ApplicationController
 		end
 	end
 
+	def index
+   @tasks = current_admin.tasks.all
+  end
+
+  def edit
+    @task = Task.find(params[:id])
+  end
+
+  def update
+    @task = Task.find(params[:id])
+    if @task.update(task_params)
+      redirect_to '/tasks'
+    else
+      render edit_task_path(@task)
+    end
+  end
+
+
+
 	private
 
 	def task_params

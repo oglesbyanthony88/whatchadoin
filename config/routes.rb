@@ -15,6 +15,9 @@ Rails.application.routes.draw do
   #logout
   delete '/logout' => 'sessions#destroy'
 
+  #admin routes
+  
+
 
   resources :admins
   resources :groups

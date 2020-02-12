@@ -1,1 +1,15 @@
 <h1> Admins Tasks </h1>
+
+<br><br>
+
+
+<ul>
+<% current_admin.tasks.each do |tasks| %>
+
+	<li><%= tasks.content %> - <%= tasks.group.title %> - <%= tasks.user.name %></li>
+	<li><%= link_to 'Edit Task', edit_task_path(tasks.id) %></li>
+</ul>
+<%end%>
+
+
+	

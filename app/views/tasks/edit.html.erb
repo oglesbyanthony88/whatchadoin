@@ -1,0 +1,24 @@
+<h1> Edit Task </h1> <br> <br>
+
+<%= form_for(@task) do |f| %>
+
+<%= f.label "Create a New Task" %> <br> <br>
+<%= f.text_area :content, :cols => 90, :rows => 6 %>  <br>
+<%= f.label "When is this due? (mm/dd/yyyy)" %>
+<%= f.text_field :duedate %>
+
+<br><br>
+
+<%= f.label "Group:" %>
+<%= f.collection_select(:group_id, Group.all, :id, :title) %>
+
+<br><br>
+
+<%= f.label "User:" %>
+<%= f.collection_select(:user_id, current_admin.users.all, :id, :name) %>
+
+<br><br><br>
+
+<%= f.submit "Submit" %>
+
+<% end %>
