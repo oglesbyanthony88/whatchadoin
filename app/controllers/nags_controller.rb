@@ -14,6 +14,7 @@ class NagsController < ApplicationController
 			if @nag.save
 				redirect_to users_path(current_user)
 			else
+				flash[:message] = "Fields missing"
 				render new_nag_path
 			end
 		elsif current_admin
@@ -21,6 +22,7 @@ class NagsController < ApplicationController
 			if @nag.save
 				redirect_to admin_path(current_admin)
 			else
+				flash[:message] = "Fields missing"
 				redirect_to new_nag_path
 			end
 		end
@@ -43,6 +45,7 @@ class NagsController < ApplicationController
     if @nag.update(nag_params)
       redirect_to '/nags'
     else
+    	flash[:message] = "Fields missing"
       render edit_nag_path(@nag)
     end
   end
