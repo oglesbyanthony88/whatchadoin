@@ -3,6 +3,7 @@ class CreateGroup < ActiveRecord::Migration[5.2]
     create_table :groups do |t|
     	t.string :title
     	t.references :admin
+    	
 
     	t.timestamps
     end

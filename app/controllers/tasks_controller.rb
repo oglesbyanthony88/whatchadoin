@@ -40,6 +40,16 @@ class TasksController < ApplicationController
     end
   end
 
+  def destroy
+   	if current_admin
+    	@task = current_admin.tasks.find(params[:id])
+    	@task.destroy
+    	redirect_to admin_path(current_admin)
+    else 
+    	redirect_to root_path
+    end
+  end
+
 
 
 	private

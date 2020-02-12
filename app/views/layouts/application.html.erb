@@ -29,7 +29,8 @@
       
       <%= link_to("Home", root_path, :class => "navbar-item") %>
         <% if admin_logged_in?%>
-          <%= link_to("Current Tasks", '/tasks', :class => "navbar-item") %>
+          <%= link_to("Tasks", '/tasks', :class => "navbar-item") %>
+          <%= link_to("Groups", '/groups', :class => "navbar-item") %>
         <% end %>
 
       <div class="navbar-item has-dropdown is-hoverable">

@@ -1,1 +1,25 @@
 <h1>Group Index Page</h1>
+
+<h1> Admins Groups </h1>
+
+<br><br>
+
+	<% if current_admin.groups.empty? %>
+		
+		<h1>You have no groups</h1>
+		
+	<% else %>
+	<ul>
+	<% current_admin.groups.each do |groups| %>
+		<li><%= groups.title %></li>
+			<li><%= link_to 'Edit Group', edit_group_path(groups.id) %></li>
+
+	<% end %>
+		</ul>
+	<% end %>
+
+
+
+
+
+

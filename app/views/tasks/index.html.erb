@@ -3,13 +3,19 @@
 <br><br>
 
 
-<ul>
-<% current_admin.tasks.each do |tasks| %>
 
-	<li><%= tasks.content %> - <%= tasks.group.title %> - <%= tasks.user.name %></li>
-	<li><%= link_to 'Edit Task', edit_task_path(tasks.id) %></li>
-</ul>
-<%end%>
+	<% if current_admin.groups.empty? %>
+		
+		<h1>You have no groups</h1>
+		
+	<% else %>
+	<ul>
+	<% current_admin.tasks.each do |tasks| %>
+		<li><%= tasks.content %> - <%= tasks.group.title %> - <%= tasks.user.name %></li>
+			<li><%= link_to 'Edit Task', edit_task_path(tasks.id) %></li>
 
+	<% end %>
+		</ul>
+	<% end %>
 
 	
