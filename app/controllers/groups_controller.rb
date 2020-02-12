@@ -28,11 +28,21 @@ class GroupsController < ApplicationController
    @groups = current_admin.groups.all
   end
 
+  def show
+		if current_admin
+			@group = Group.find_by_id(params[:id])
+		else
+			redirect_if_not_logged_in
+			@group = Group.find_by_id(params[:id])
+		end
+	end
+
 	private
 
 	def group_params
 		params.require(:group).permit(:title)
 	end
+
 
 
 end

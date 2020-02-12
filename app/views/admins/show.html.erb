@@ -5,10 +5,17 @@
 <ul>
 <% @admin.users.each do |user| %>
 
-<li><strong><%= link_to user.name, user_path(user.id) %><strong> - <%= user.id %> </li>
+<li><strong><%= link_to user.name, user_path(user.id) %></strong> - <%= user.id %> </li>
 <%= link_to 'Edit', edit_user_path(user.id) %>
 
 <% end %>
-
 </ul>
+
+
+<% @admin.groups.each do |group| %>
+<ul>
+<li><strong><%= link_to group.title, group_path(group.id) %></strong> - <%= group.id %> </li>
+<%= link_to 'Edit', edit_group_path(group.id) %>
+</ul>
+<% end %>
 

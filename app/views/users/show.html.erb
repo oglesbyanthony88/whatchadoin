@@ -15,7 +15,7 @@
     <tr>
       <th>Task</th>
       <th>Group ID</th>
-      <th>Group Name</th>
+      <th>Group Title</th>
     </tr>
   </thead>
 
@@ -24,12 +24,12 @@
       <tr>
         <td><%= t.content %></td>
         <td><%= t.group_id %></td>
-        
+        <td><%= t.group.title %></td>
       </tr>
     <% end %>
   </tbody>
 </table>
-
+<br><br><br><br>
 <%= link_to 'Edit Profile', edit_user_path(@user.id) %>
 
 

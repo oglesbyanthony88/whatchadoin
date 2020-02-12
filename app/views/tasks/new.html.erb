@@ -15,7 +15,7 @@
 <br><br>
 
 <%= f.label "User:" %>
-<%= f.collection_select(:user_id, User.all, :id, :name) %>
+<%= f.collection_select(:user_id, current_admin.users.all, :id, :name) %>
 
 <br><br><br>
 
