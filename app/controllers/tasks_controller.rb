@@ -15,7 +15,7 @@ class TasksController < ApplicationController
 			if @task.save
 				redirect_to admin_path(current_admin)
 			else
-				render new_task_path
+				redirect_to new_task_path
 				#binding.pry
 			end
 		else
@@ -36,7 +36,7 @@ class TasksController < ApplicationController
     if @task.update(task_params)
       redirect_to '/tasks'
     else
-      render edit_task_path(@task)
+      redirect_to edit_task_path(@task)
     end
   end
 

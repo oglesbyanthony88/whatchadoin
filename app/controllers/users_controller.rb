@@ -13,7 +13,7 @@ class UsersController < ApplicationController
 			if @user.save
 				redirect_to admin_path(current_admin.id)
 			else
-				render new_user_path
+				redirect_to new_user_path
 			end
 		else
 			redirect_to root_path
@@ -38,7 +38,7 @@ class UsersController < ApplicationController
     if @user.update(user_params)
       redirect_to @user
     else
-      render edit_user_path(@user)
+      redirect_to edit_user_path(@user)
     end
   end
 

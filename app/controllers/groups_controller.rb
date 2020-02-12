@@ -17,7 +17,7 @@ class GroupsController < ApplicationController
 				redirect_to groups_path
 			else
 				flash[:message] = "Fields missing"
-				render new_group_path
+				redirect_to new_group_path
 			#binding.pry
 			end
 		else 
@@ -48,7 +48,7 @@ class GroupsController < ApplicationController
       redirect_to '/groups'
     else
     	flash[:message] = "Fields missing"
-      render edit_group_path(@group)
+      redirect_to edit_group_path(@group)
     end
   end
 

@@ -12,7 +12,8 @@ class AdminsController < ApplicationController
 			session[:admin_id] = @admin.id
 			redirect_to admin_path(@admin)
 		else
-			render :new
+			flash[:message] = "Fields missing"
+			render new_admin_path
 		end
 	end
 	#sends admin to show page if logged in
@@ -22,11 +23,29 @@ class AdminsController < ApplicationController
 		redirect_to '/' if !@admin
 	end
 
-	def user_show
-		redirect_if_not_logged_in_admin
-		@admin = Admin.users.find_by_id(params[:id])
-		redirect_to '/' if !@admin
-	end
+	def edit
+    @admin = Admin.find(params[:id])
+  end
+
+  def update
+    @admin = Admin.find(params[:id])
+    if @admin.update(admin_params)
+      redirect_to @admin
+    else
+    	flash[:message] = "Fields missing"
+      redirect_to edit_admin_path(current_admin)
+    end
+  end
+
+  def destroy
+   	if current_admin
+    	@admin = current_admin.find(params[:id])
+    	@admin.destroy
+    	redirect_to admin_path(current_admin)
+    else 
+    	redirect_to root_path
+    end
+  end
 
 	private
 
