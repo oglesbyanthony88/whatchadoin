@@ -1,28 +1,14 @@
-<h1>Welcome <%= @admin.name %></h1>
+<h1>Welcome <%= @admin.name %></h1><br><br><br>
 
-<h1>These are your users</h1>
-<div>
- <%= collection_select(:user_id, User.all, :id, :name) %>
-<!--   NEED TO FIGURE OUT HOW TO PUT LINK_TO 
-  IN COLECTION SELECT TO MAKE LINKS TO USER SHOW PAGE! -->
+<big><h1>These are your users</h1></big>
+<br>
+<ul>
+<% @admin.users.each do |user| %>
 
-<!-- <h1>These are you current Groups</h1>
-<table>
-  <thead>
-    <tr>
-      <th>Group</th>
-      <th>Group ID</th>
-      <th>User Count</th>
-    </tr>
-  </thead>
+<li><strong><%= link_to user.name, user_path(user.id) %><strong> - <%= user.id %> </li>
+<%= link_to 'Edit', edit_user_path(user.id) %>
 
-  <tbody>
-    <% #@admin.groups.each do |g| %>
-      <tr>
-        <td><%= g.title %></td>
-        <td><%= g.id %></td>
-      </tr>
-    <% #end %>
-  </tbody>
-</table>
- -->
+<% end %>
+
+</ul>
+
