@@ -16,13 +16,17 @@ class UsersController < ApplicationController
 				render new_user_path
 			end
 		else
-			redirect_if_not_logged_in_admin
+			redirect_to root_path
 		end
 	end
 	#sends user to show page if logged in
 	def show
-		redirect_if_not_logged_in
-		@user = User.find_by_id(params[:id])
+		if current_admin
+			@user = User.find_by_id(params[:id])
+		else
+			redirect_if_not_logged_in
+			@user = User.find_by_id(params[:id])
+		end
 	end
 
 	private
