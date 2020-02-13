@@ -26,10 +26,23 @@ class SessionsController < ApplicationController
 		admin = Admin.find_by(email: params[:admin][:email])
 			if admin && admin.authenticate(params[:admin][:password])
 				session[:admin_id] = admin.id
-				redirect_to admin_path(admin)
+				redirect_to admin_path(current_admin)
 			else
 				flash[:message] = "Incorrect Login Info"
 				redirect_to login_path
 			end
 	end
+
+	def omniauth
+    @admin = Admin.from_omniauth(auth)
+    @admin.save
+    session[:admin_id] = @admin.id
+    redirect_to admin_path(current_admin)
+  end
+
+  private
+
+  def auth
+    request.env['omniauth.auth']
+  end
 end

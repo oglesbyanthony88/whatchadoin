@@ -2,6 +2,9 @@ Rails.application.routes.draw do
 
   root 'sessions#home'
 
+  #OAUTH CALLBACK
+  get '/auth/:provider/callback' => 'sessions#omniauth'
+
   get '/signup' => 'admins#new'
 
   #login
