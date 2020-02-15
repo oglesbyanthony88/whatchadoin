@@ -9,7 +9,7 @@ class UsersController < ApplicationController
 	def create
 		if current_admin
 			@user = current_admin.users.build(user_params)
-			# binding.pry
+			binding.pry
 			if @user.save
 				redirect_to admin_path(current_admin.id)
 			else

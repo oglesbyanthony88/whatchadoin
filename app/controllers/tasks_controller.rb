@@ -24,7 +24,12 @@ class TasksController < ApplicationController
 	end
 
 	def index
-   @tasks = current_admin.tasks.all
+		if params[:group_id] && @group = Group.find_by_id(params[:group_id])
+   		@tasks = @group.tasks
+   	else
+   		@tasks = current_admin.tasks.all
+   	end
+   			
   end
 
   def edit

@@ -12,7 +12,6 @@ class GroupsController < ApplicationController
 	def create
 		if current_admin
 			@group = current_admin.groups.build(group_params)
-			#binding.pry
 			if @group.save
 				redirect_to groups_path
 			else
@@ -26,7 +25,7 @@ class GroupsController < ApplicationController
 	end
 
 	def index
-   @groups = current_admin.groups.all
+   		@groups = current_admin.groups.all
   end
 
   def show

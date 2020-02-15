@@ -12,7 +12,7 @@ class NagsController < ApplicationController
 		if current_user
 			@nag = current_user.nags.build(nag_params)
 			if @nag.save
-				redirect_to users_path(current_user)
+				redirect_to user_path(current_user)
 			else
 				flash[:message] = "Fields missing"
 				render new_nag_path
@@ -22,6 +22,7 @@ class NagsController < ApplicationController
 			if @nag.save
 				redirect_to admin_path(current_admin)
 			else
+
 				flash[:message] = "Fields missing"
 				redirect_to new_nag_path
 			end
@@ -30,9 +31,17 @@ class NagsController < ApplicationController
 
 	def index
 		if current_admin
-    	@nags = current_admin.nags.all
- 		else
- 			@nags = current_user.nags.all
+			if params[:group_id] && @group = Group.find_by_id(params[:group_id])
+    		@nags = @group.nags
+    	else
+    		@nags = current_admin.nags
+    	end
+ 		elsif current_user
+ 			if params[:group_id] && @group = Group.find_by_id(params[:group_id])
+    		@nags = @group.nags
+    	else
+    		@nags = current_user.nags
+    	end
  		end
   end
 
