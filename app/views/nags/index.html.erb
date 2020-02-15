@@ -1,4 +1,4 @@
-<h1>Your Nags</h1>
+<h1>All Nags</h1>
 
 <% if admin_logged_in? %>
 
@@ -9,11 +9,9 @@
 	<% else %>
 
   <ul>
-		<% current_admin.nags.each do |nags| %>
+		<% @nags.each do |nag| %>
 
-			<li><%= nags.content %> - <%= nags.created_at %> - <%= nags.admin.name %></li>
-
-			<li><%= link_to 'Edit Nag', edit_nag_path(nags.id) %></li>
+			<li><%= nag.content %> - <%= nag.created_at %> - <%= nag.creator.try(:name) %></li>
 
 		<% end %>
 	</ul>
@@ -28,11 +26,9 @@
 
 	<% else %>
   <ul>
-		<% current_user.nags.each do |nags| %>
+		<% @nags.each do |nag| %>
 
-			<li><%= nags.content %> - <%= nags.created_at %> - <%= nags.user.name %></li>
-
-			<li><%= link_to 'Edit Nag', edit_nag_path(nags.id) %></li>
+			<li><%= nag.content %> - <%= nag.created_at %> - <%= nag.creator.try(:name) %></li>
 
 		<% end %>
 	</ul>
