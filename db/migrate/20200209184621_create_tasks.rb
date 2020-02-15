@@ -4,8 +4,8 @@ class CreateTasks < ActiveRecord::Migration[5.2]
       t.text :content
       t.string :duedate
       t.references :admin
-      t.belongs_to :user, foreign_key: true
-      t.belongs_to :group, foreign_key: true
+      t.references :user
+      t.references :group
       
 
       t.timestamps
