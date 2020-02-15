@@ -20,12 +20,26 @@ Rails.application.routes.draw do
 
   #admin routes
   
+resources :users
+resources :tasks
+resources :nags
+resources :groups
+resources :admins
+
+resources :groups do
+  resources :tasks, only: [:index]
+  resources :nags, only: [:index]
+end
 
 
-  resources :admins
-  resources :groups
-  resources :nags
-  resources :tasks
-  resources :users
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 end
+
+
+
+# admins/:id/groups/new/edit
+# admins/:id/tasks/new/edit
+# admins/:id/nags/new/edit
+# admins/:id/users/new/edit
+
+
