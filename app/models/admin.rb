@@ -1,8 +1,8 @@
 class Admin < ApplicationRecord
 	has_secure_password
-	has_many :groups
 	has_many :tasks
 	has_many :nags
+	has_many :groups
 	has_many :users
 
 	validates :name, :email, presence: true
@@ -17,3 +17,13 @@ class Admin < ApplicationRecord
 
 	
 end
+# class User/Admin < ActiveRecord::Base
+#   has_many :tasks
+#   has_many :nags, :through => :tasks
+# end
+
+
+# class User/Admin < ActiveRecord::Base
+#   has_many :tasks
+#   has_many :groups, :through => :tasks
+# end

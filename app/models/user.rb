@@ -9,3 +9,13 @@ class User < ApplicationRecord
 
 	
 end
+
+# class User/Admin < ActiveRecord::Base
+#   has_many :tasks
+#   has_many :nags, :through => :tasks
+# end
+
+# class User/Admin < ActiveRecord::Base
+#   has_many :tasks
+#   has_many :groups, :through => :tasks
+# end
