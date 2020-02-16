@@ -82,9 +82,5 @@ class GroupsController < ApplicationController
 		params.require(:group).permit(:title)
 	end
 
-	def find_groups
-		@group = Group.find_by_id(params[:id])
-	end
-
 
 end

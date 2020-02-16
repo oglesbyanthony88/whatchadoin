@@ -24,7 +24,7 @@ class TasksController < ApplicationController
 	end
 
 	def index
-		if params[:group_id] && @group = Group.find_by_id(params[:group_id])
+		if params[:group_id] && @group = find_groups
    		@tasks = @group.tasks
    	else
    		@tasks = current_admin.tasks.all

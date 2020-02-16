@@ -31,13 +31,13 @@ class NagsController < ApplicationController
 
 	def index
 		if current_admin
-			if params[:group_id] && @group = Group.find_by_id(params[:group_id])
+			if params[:group_id] && @group = find_groups
     		@nags = @group.nags
     	else
     		@nags = current_admin.nags
     	end
  		elsif current_user
- 			if params[:group_id] && @group = Group.find_by_id(params[:group_id])
+ 			if params[:group_id] && @group = find_groups
     		@nags = @group.nags
     	else
     		@nags = current_user.nags
