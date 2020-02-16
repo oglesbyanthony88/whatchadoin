@@ -26,9 +26,9 @@ class GroupsController < ApplicationController
 
 	def index
 		if current_admin
-   		@groups = current_admin.groups
+   		@group = current_admin.groups.group_alpha
    	else
-   		@groups = current_user.groups
+   		@group = current_user.groups.group_alpha
    	end
   end
 

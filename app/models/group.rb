@@ -6,6 +6,7 @@ class Group < ApplicationRecord
 
 	delegate :users, :to => :tasks, :allow_nil => true
 	
+	scope :group_alpha, -> { order(:title) }
 
 	validates :title, presence: :true
 

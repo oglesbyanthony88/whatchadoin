@@ -3,7 +3,8 @@
 <big><h1>This is your Team</h1></big>
 <br>
 <ul>
-<% current_admin.users.each do |user| %>
+<% user = current_admin.users.alpha %>
+<% user.each do |user| %>
 
 <li><strong><%= link_to user.name, user_path(user.id) %></strong> - <%= user.id %> </li>
 <%= link_to 'Edit', edit_user_path(user.id) %><br>

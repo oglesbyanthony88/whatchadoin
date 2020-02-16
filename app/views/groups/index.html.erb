@@ -8,7 +8,7 @@
 		
 	<% else %>
 		<ul>
-		<% current_admin.groups.each do |groups| %>
+		<% @group.each do |groups| %>
 			<li><strong><%= groups.title %></strong></li>
 				<li><%= link_to 'Group Profile', admin_group_path(current_admin, groups.id) %></li>
 				<li><%= link_to 'Edit Group', edit_group_path(groups.id) %></li>
