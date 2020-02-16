@@ -13,9 +13,10 @@
 <%= f.label :password %>
 <%= f.password_field :password%><br><br>
 
-<%= f.submit "Submit" %>
+<%= f.submit "Sign Up", :class => "button is-dark" %>
 
 <% end %>
+<br>
 <div class="buttons">
-<%= link_to "Sign Up with Google", '/auth/google_oauth2', :class => "button is-dark"%>
+<%= link_to "Sign Up with Google", '/auth/google_oauth2', :class => "button is-dark" %>
 </div>

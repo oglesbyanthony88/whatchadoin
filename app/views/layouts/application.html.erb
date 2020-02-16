@@ -38,27 +38,29 @@
           <%= link_to("Profile", user_path(current_user), :class => "navbar-item") %>
           <%= link_to("Tasks", '/tasks', :class => "navbar-item") %>
           <%= link_to("Groups", '/groups', :class => "navbar-item") %>
-          
-        <% end %>
+      <% else %>
+          <%= link_to("Home", root_path, :class => "navbar-item") %>
+      <% end %>
 
-      <div class="navbar-item has-dropdown is-hoverable">
-        <a class="navbar-link">
-          More
-        </a>
+      <% if admin_logged_in? || logged_in? %>
+        <div class="navbar-item has-dropdown is-hoverable">
+          <a class="navbar-link">
+            More
+          </a>
+           <div class="navbar-dropdown">
+              <% if admin_logged_in?%>
+              <%= link_to("New Nag", new_admin_nag_path(current_admin), :class => "navbar-item") %>
+                <%= link_to("New Group", new_admin_group_path(current_admin), :class => "navbar-item") %>
+                <%= link_to("New User", new_admin_user_path(current_admin), :class => "navbar-item") %>
+                <%= link_to("New Task", new_admin_task_path(current_admin), :class => "navbar-item") %>
+              <% elsif logged_in? %>
+                <%= link_to("New Nag", new_user_nag_path(current_user), :class => "navbar-item") %>
+              <% end %>
 
-        <div class="navbar-dropdown">
-        <% if admin_logged_in?%>
-          <%= link_to("New Nag", new_admin_nag_path(current_admin), :class => "navbar-item") %>
-          <%= link_to("New Group", new_admin_group_path(current_admin), :class => "navbar-item") %>
-          <%= link_to("New User", new_admin_user_path(current_admin), :class => "navbar-item") %>
-          <%= link_to("New Task", new_admin_task_path(current_admin), :class => "navbar-item") %>
-        <% elsif logged_in? %>
-          <%= link_to("New Nag", new_user_nag_path(current_user), :class => "navbar-item") %>
-        <% end %>
-
-        </div>
+          </div>
         
-      </div>
+        </div>
+      <% end %>
     </div>
 
     <div class="navbar-end">
