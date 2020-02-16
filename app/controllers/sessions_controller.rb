@@ -33,11 +33,18 @@ class SessionsController < ApplicationController
 			end
 	end
 
-	def omniauth
-    @admin = Admin.from_omniauth(auth)
-    @admin.save
-    session[:admin_id] = @admin.id
-    redirect_to admin_path(current_admin)
+	def google
+    @admin = Admin.find_or_create_by(email: auth["info"]["email"]) do |admin|
+    	admin.name = auth["info"]["first_name"]
+    	admin.password = SecureRandom.hex(10)
+    end
+    if
+    	@admin.save
+    	session[:admin_id] = @admin.id
+    	redirect_to admin_path(current_admin)
+  	else
+  		redirect_to root_path
+  	end
   end
 
   private

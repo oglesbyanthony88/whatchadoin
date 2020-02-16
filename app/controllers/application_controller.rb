@@ -2,7 +2,9 @@ class ApplicationController < ActionController::Base
 
 
 	#gives views access to methods
-	helper_method :current_user, :logged_in?, :is_admin?, :redirect_if_not_logged_in_admin, :admin_logged_in?, :current_admin, :find_groups
+	helper_method :current_user, :logged_in?, :is_admin?, 
+	:redirect_if_not_logged_in_admin, :admin_logged_in?, :current_admin, 
+	:find_groups
 
  private
 
@@ -38,7 +40,6 @@ class ApplicationController < ActionController::Base
   def find_groups
 		@group = Group.find_by_id(params[:id])
 	end
-
   
   	
 
