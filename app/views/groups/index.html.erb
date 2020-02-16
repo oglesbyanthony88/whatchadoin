@@ -1,24 +1,22 @@
-<h1>Group Index Page</h1>
-
 <h1> Admins Groups </h1>
 
 <br><br>
-
 	<% if current_admin.groups.empty? %>
 		
 		<h1>You have no groups</h1>
 		
 	<% else %>
-	<ul>
-	<% current_admin.groups.each do |groups| %>
-		<li><strong><%= groups.title %></strong></li>
-			<li><%= link_to 'Group Tasks', group_tasks_path(groups.id) %></li>
-			<li><%= link_to 'Group Nags', group_nags_path(groups.id) %></li>
-			<li><%= link_to 'Edit Group', edit_group_path(groups.id) %></li>
-
-	<% end %>
+		<ul>
+		<% current_admin.groups.each do |groups| %>
+			<li><strong><%= groups.title %></strong></li>
+				<li><%= link_to 'Group Tasks', group_tasks_path(groups.id) %></li>
+				<li><%= link_to 'Group Nags', group_nags_path(groups.id) %></li>
+				<li><%= link_to 'Edit Group', edit_group_path(groups.id) %></li>
+		<% end %>
 		</ul>
 	<% end %>
+
+
 
 
 

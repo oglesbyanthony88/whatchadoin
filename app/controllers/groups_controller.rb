@@ -1,5 +1,5 @@
 class GroupsController < ApplicationController
-	before_action :redirect_if_not_logged_in_admin #See App Controller method
+	 #See App Controller method
 
 	#creates new group
 	def new
@@ -25,17 +25,30 @@ class GroupsController < ApplicationController
 	end
 
 	def index
+		if current_admin
    		@groups = current_admin.groups.all
+   	else
+   		@groups = current_user.groups.all
+   	end
   end
 
   def show
-		if current_admin
+  	if params[:group_id] && @group = Group.find_by_id(params[:group_id])
 			@group = Group.find_by_id(params[:id])
 		else
 			redirect_if_not_logged_in
 			@group = Group.find_by_id(params[:id])
 		end
 	end
+
+	# def index
+	# 	if params[:group_id] && @group = Group.find_by_id(params[:group_id])
+ #   		@tasks = @group.tasks
+ #   	else
+ #   		@tasks = current_admin.tasks.all
+ #   	end
+   			
+ #  end
 
 	def edit
     @group = Group.find(params[:id])
