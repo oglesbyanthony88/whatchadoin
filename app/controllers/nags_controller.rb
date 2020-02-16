@@ -32,15 +32,15 @@ class NagsController < ApplicationController
 	def index
 		if current_admin
 			if params[:group_id] && @group = find_groups
-    		@nags = @group.nags
+    		@nags = @group.nags.date_reversed
     	else
-    		@nags = current_admin.nags
+    		@nags = current_admin.nags.date_reversed
     	end
  		elsif current_user
  			if params[:group_id] && @group = find_groups
-    		@nags = @group.nags
+    		@nags = @group.nags.date_reversed
     	else
-    		@nags = current_user.nags
+    		@nags = current_user.nags.date_reversed
     	end
  		end
   end

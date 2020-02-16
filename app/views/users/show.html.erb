@@ -3,7 +3,7 @@
 
 <br><br>
 
-<h1>These are<%= @user.name %>'s tasks</h1>
+<h1>These are <%= @user.name %>'s tasks</h1>
   <% @user.tasks.each do |t| %>
     <%= t.content %> for group <%= t.group_id %> due <%= t.duedate %><br>
     <%= link_to 'Group', admin_group_path(current_admin, t.group_id) %><br>

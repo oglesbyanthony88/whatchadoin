@@ -1,9 +1,9 @@
-<h1>Welcome <%= @admin.name %></h1><br><br><br>
+<h1>Welcome <%= current_admin.name %></h1><br><br><br>
 
 <big><h1>This is your Team</h1></big>
 <br>
 <ul>
-<% @admin.users.each do |user| %>
+<% current_admin.users.each do |user| %>
 
 <li><strong><%= link_to user.name, user_path(user.id) %></strong> - <%= user.id %> </li>
 <%= link_to 'Edit', edit_user_path(user.id) %><br>

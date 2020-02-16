@@ -7,6 +7,7 @@ class Nag < ApplicationRecord
 
 	validates :content, presence: :true
 
+	scope :date_reversed, -> { order('created_at DESC') }
 
 	def creator
 		!!admin_id ? admin : user

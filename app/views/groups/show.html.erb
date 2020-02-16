@@ -5,7 +5,8 @@
 <br><br>
 <div class="columns">
   <div class="column">
-<% @group.tasks.each do |t| %>
+<% @tasks = @group.tasks.order_by_due_date %>  	
+<% @tasks.each do |t| %>
 	<strong>Task: </strong><%= t.content %><br>
 	<strong>Issued to: </strong><%= t.user.name %><br>
 	<strong>Due Date: </strong><%= t.duedate %><br>
@@ -15,7 +16,8 @@
 </div>
 <div class="column">
 <strong><%= @group.title %>'s Nags </strong><br><br>
-<% @group.nags.each do |n| %>
+<% @nags = @group.nags.date_reversed %>
+<% @nags.each do |n| %>
 	<li><%= n.content %> - <%= n.created_at %> - <%= n.creator.try(:name) %></li><br>
 <% end %>
 </div>
@@ -45,5 +47,3 @@
 </div>
 
 <% end %>
-
-

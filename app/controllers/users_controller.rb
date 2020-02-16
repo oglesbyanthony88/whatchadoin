@@ -22,7 +22,7 @@ class UsersController < ApplicationController
 	#sends user to show page if logged in
 	def show
 		if current_admin
-			@user = current_user
+			@user = User.find(params[:id])
 		else
 			redirect_if_not_logged_in
 			@user = current_user

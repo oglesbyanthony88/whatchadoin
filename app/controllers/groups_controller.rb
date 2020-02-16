@@ -32,10 +32,12 @@ class GroupsController < ApplicationController
    	end
   end
 
+  
+
   def show
   	if current_admin
   		if params[:group_id] && @group = find_groups
-				find_groups
+  			find_groups
 			else
 				redirect_if_not_logged_in_admin
 				find_groups

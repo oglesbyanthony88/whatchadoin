@@ -25,9 +25,9 @@ class TasksController < ApplicationController
 
 	def index
 		if params[:group_id] && @group = find_groups
-   		@tasks = @group.tasks
+   		@tasks = @group.tasksorder_by_due_date
    	else
-   		@tasks = current_admin.tasks.all
+   		@tasks = current_admin.tasks.order_by_due_date
    	end
    			
   end
