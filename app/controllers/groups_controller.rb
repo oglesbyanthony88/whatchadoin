@@ -34,18 +34,18 @@ class GroupsController < ApplicationController
 
   def show
   	if current_admin
-  		if params[:group_id] && @group = Group.find_by_id(params[:group_id])
-				@group = Group.find_by_id(params[:id])
+  		if params[:group_id] && @group = find_groups
+				find_groups
 			else
 				redirect_if_not_logged_in_admin
-				@group = Group.find_by_id(params[:id])
+				find_groups
 			end
 		elsif current_user
-			if params[:group_id] && @group = Group.find_by_id(params[:group_id])
-				@group = Group.find_by_id(params[:id])
+			if params[:group_id] && @group = find_groups
+				find_groups
 			else
 				redirect_if_not_logged_in
-				@group = Group.find_by_id(params[:id])
+				find_groups
 			end
 		end
 	end
@@ -53,11 +53,11 @@ class GroupsController < ApplicationController
 
 
 	def edit
-    @group = Group.find(params[:id])
+    find_groups
   end
 
   def update
-    @group = Group.find(params[:id])
+    find_groups
     if @group.update(group_params)
       redirect_to '/groups'
     else
@@ -82,6 +82,9 @@ class GroupsController < ApplicationController
 		params.require(:group).permit(:title)
 	end
 
+	def find_groups
+		@group = Group.find_by_id(params[:id])
+	end
 
 
 end

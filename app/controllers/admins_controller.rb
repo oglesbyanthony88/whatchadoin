@@ -20,7 +20,6 @@ class AdminsController < ApplicationController
 	def show
 		redirect_if_not_logged_in_admin
 		find_admin
-		redirect_to '/' if !@admin
 	end
 
 	def edit
