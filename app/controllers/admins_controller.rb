@@ -19,16 +19,16 @@ class AdminsController < ApplicationController
 	#sends admin to show page if logged in
 	def show
 		redirect_if_not_logged_in_admin
-		@admin = Admin.find_by_id(params[:id])
+		find_admin
 		redirect_to '/' if !@admin
 	end
 
 	def edit
-    @admin = Admin.find(params[:id])
+    find_admin
   end
 
   def update
-    @admin = Admin.find(params[:id])
+    find_admin
     if @admin.update(admin_params)
       redirect_to @admin
     else
@@ -39,7 +39,7 @@ class AdminsController < ApplicationController
 
   def destroy
    	if current_admin
-    	@admin = current_admin.find(params[:id])
+    	find_admin
     	@admin.destroy
     	redirect_to admin_path(current_admin)
     else 
@@ -51,5 +51,9 @@ class AdminsController < ApplicationController
 
 	def admin_params
 		params.require(:admin).permit(:name, :email, :password)
+	end
+
+	def find_admin
+		@admin = Admin.find(params[:id])
 	end
 end

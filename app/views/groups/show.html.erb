@@ -1,7 +1,10 @@
 <% if admin_logged_in?%>
+
+
 <h1>This is <%= @group.title %>'s profile</h1>
 <br><br>
-
+<div class="columns">
+  <div class="column">
 <% @group.tasks.each do |t| %>
 	<strong>Task: </strong><%= t.content %><br>
 	<strong>Issued to: </strong><%= t.user.name %><br>
@@ -9,17 +12,22 @@
 	<%= link_to 'Edit', edit_task_path(t.id) %><br>
 	<br><br>
 <% end %>
-
+</div>
+<div class="column">
 <strong><%= @group.title %>'s Nags </strong><br><br>
 <% @group.nags.each do |n| %>
 	<li><%= n.content %> - <%= n.created_at %> - <%= n.creator.try(:name) %></li><br>
 <% end %>
+</div>
+</div>
 
 
 <% else %>
 
 <h1>This is <%= @group.title %>'s profile</h1>
 <br><br>
+<div class="columns">
+  <div class="column">
 
 <% @group.tasks.each do |t| %>
 	<strong>Task: </strong><%= t.content %><br>
@@ -27,5 +35,15 @@
 	<strong>Due Date: </strong><%= t.duedate %><br>
 	<br><br>
 <% end %>
+</div>
+  <div class="column">
+  	<strong><%= @group.title %>'s Nags </strong><br><br>
+<% @group.nags.each do |n| %>
+	<li><%= n.content %> - <%= n.created_at %> - <%= n.creator.try(:name) %></li><br>
+<% end %>
+</div>
+</div>
 
 <% end %>
+
+
