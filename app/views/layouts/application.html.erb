@@ -28,7 +28,7 @@
     <div class="navbar-start">
       
       <%= link_to("Home", root_path, :class => "navbar-item") %>
-      <%= link_to("My Nags", '/nags', :class => "navbar-item") %>
+      <%= link_to("My Nags", user_nags_path(current_user), :class => "navbar-item") %>
       <%= link_to("My Groups", '/groups', :class => "navbar-item") %>
         <% if admin_logged_in?%>
           <%= link_to("Tasks", '/tasks', :class => "navbar-item") %>

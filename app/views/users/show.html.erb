@@ -6,11 +6,15 @@
 
 
 
-<h1>Welcome <%= @user.name %></h1>
+<h1>Welcome <%= current_user.name %>!</h1>
 
 <h1>These are your tasks</h1>
+  <% current_user.tasks.each do |t| %>
+    <%= t.content %> for group <%= t.group_id %> due <%= t.duedate %><br>
+    <%= link_to 'Group', user_group_path(current_user.id, t.group_id) %><br>
+  <% end %>
 
-
+<br><br><br><br>
 <%= link_to 'Edit Profile', edit_user_path(@user.id) %>
 
 

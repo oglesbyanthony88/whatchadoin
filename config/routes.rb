@@ -18,7 +18,7 @@ Rails.application.routes.draw do
   #logout
   delete '/logout' => 'sessions#destroy'
 
-  #admin routes
+
   
 resources :users
 resources :tasks
@@ -30,6 +30,21 @@ resources :groups do
   resources :tasks, only: [:index]
   resources :nags, only: [:index]
 end
+
+resources :admins do
+  resources :groups, only: [:new, :create]
+  resources :users, only: [:new, :create]
+  resources :tasks, only: [:new, :create]
+  resources :nags, only: [:new, :create]
+end
+
+resources :users do
+  resources :nags, only: [:new, :create, :index]
+  resources :tasks, only: [:index]
+  resources :groups, only: [:show]
+end
+
+
 
 
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
