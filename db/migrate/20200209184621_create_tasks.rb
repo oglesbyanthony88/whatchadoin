@@ -8,6 +8,8 @@ class CreateTasks < ActiveRecord::Migration[5.2]
       t.references :group
       
 
+      
+
       t.timestamps
     end
   end
