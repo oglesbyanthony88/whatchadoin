@@ -10,8 +10,7 @@
 		<ul>
 		<% current_admin.groups.each do |groups| %>
 			<li><strong><%= groups.title %></strong></li>
-				<li><%= link_to 'Group Tasks', group_tasks_path(groups.id) %></li>
-				<li><%= link_to 'Group Nags', group_nags_path(groups.id) %></li>
+				<li><%= link_to 'Group Profile', admin_group_path(current_admin, groups.id) %></li>
 				<li><%= link_to 'Edit Group', edit_group_path(groups.id) %></li>
 		<% end %>
 		</ul>

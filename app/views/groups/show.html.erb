@@ -1,9 +1,31 @@
 <% if admin_logged_in?%>
-<h1>This is <%= @group.title %> profile</h1>
+<h1>This is <%= @group.title %>'s profile</h1>
+<br><br>
+
+<% @group.tasks.each do |t| %>
+	<strong>Task: </strong><%= t.content %><br>
+	<strong>Issued to: </strong><%= t.user.name %><br>
+	<strong>Due Date: </strong><%= t.duedate %><br>
+	<%= link_to 'Edit', edit_task_path(t.id) %><br>
+	<br><br>
+<% end %>
+
+<strong><%= @group.title %>'s Nags </strong><br><br>
+<% @group.nags.each do |n| %>
+	<li><%= n.content %> - <%= n.created_at %> - <%= n.creator.try(:name) %></li><br>
+<% end %>
 
 
 <% else %>
 
-<h1>This is <%= @group.title %> profile</h1>
+<h1>This is <%= @group.title %>'s profile</h1>
+<br><br>
+
+<% @group.tasks.each do |t| %>
+	<strong>Task: </strong><%= t.content %><br>
+	<strong>Issued to: </strong><%= t.user.name %><br>
+	<strong>Due Date: </strong><%= t.duedate %><br>
+	<br><br>
+<% end %>
 
 <% end %>

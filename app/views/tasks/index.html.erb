@@ -2,8 +2,6 @@
 
 <br><br>
 
-
-
 	<% if current_admin.groups.empty? %>
 		
 		<h1>You have no groups</h1>
@@ -17,7 +15,7 @@
 				<strong>Due Date: </strong><%= tasks.duedate %><br>
 				<%= link_to 'Edit', edit_task_path(tasks.id) %><br>
 				<% end %>
-				</li>	
+				</li><br><br>	
 	<% end %>
 
 	
