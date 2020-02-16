@@ -26,29 +26,31 @@ class GroupsController < ApplicationController
 
 	def index
 		if current_admin
-   		@groups = current_admin.groups.all
+   		@groups = current_admin.groups
    	else
-   		@groups = current_user.groups.all
+   		@groups = current_user.groups
    	end
   end
 
   def show
-  	if params[:group_id] && @group = Group.find_by_id(params[:group_id])
-			@group = Group.find_by_id(params[:id])
-		else
-			redirect_if_not_logged_in
-			@group = Group.find_by_id(params[:id])
+  	if current_admin
+  		if params[:group_id] && @group = Group.find_by_id(params[:group_id])
+				@group = Group.find_by_id(params[:id])
+			else
+				redirect_if_not_logged_in_admin
+				@group = Group.find_by_id(params[:id])
+			end
+		elsif current_user
+			if params[:group_id] && @group = Group.find_by_id(params[:group_id])
+				@group = Group.find_by_id(params[:id])
+			else
+				redirect_if_not_logged_in
+				@group = Group.find_by_id(params[:id])
+			end
 		end
 	end
 
-	# def index
-	# 	if params[:group_id] && @group = Group.find_by_id(params[:group_id])
- #   		@tasks = @group.tasks
- #   	else
- #   		@tasks = current_admin.tasks.all
- #   	end
-   			
- #  end
+
 
 	def edit
     @group = Group.find(params[:id])

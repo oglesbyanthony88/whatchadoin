@@ -32,14 +32,14 @@ resources :groups do
 end
 
 resources :admins do
-  resources :groups, only: [:new, :create]
-  resources :users, only: [:new, :create]
-  resources :tasks, only: [:new, :create]
-  resources :nags, only: [:new, :create]
+  resources :groups, only: [:new, :create, :index, :show]
+  resources :users, only: [:new, :create, :update, :edit, :index]
+  resources :tasks, only: [:new, :create, :index]
+  resources :nags, only: [:new, :create, :update, :edit, :index]
 end
 
 resources :users do
-  resources :nags, only: [:new, :create, :index]
+  resources :nags, only: [:new, :create, :update, :edit, :index]
   resources :tasks, only: [:index]
   resources :groups, only: [:show]
 end
