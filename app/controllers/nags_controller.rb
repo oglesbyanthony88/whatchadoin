@@ -79,6 +79,4 @@ class NagsController < ApplicationController
 	def nag_params
 		params.require(:nag).permit(:content, :task_id)
 	end
-
-
 end
