@@ -4,8 +4,7 @@ class Nag < ApplicationRecord
 	
 	# delegate :admin, :to => :task, :allow_nil => true
 	# delegate :user, :to => :task, :allow_nil => true
-
-	validates :content, presence: :true
+	validates :content, length: {in: 1..100}
 
 	scope :date_reversed, -> { order('created_at DESC') }
 

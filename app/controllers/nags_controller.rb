@@ -14,7 +14,7 @@ class NagsController < ApplicationController
 			if @nag.save
 				redirect_to user_path(current_user)
 			else
-				flash[:message] = "Fields missing"
+				flash[:message] = "Keep Nags between 1 and 100 characters please."
 				render new_nag_path
 			end
 		elsif current_admin
@@ -23,7 +23,7 @@ class NagsController < ApplicationController
 				redirect_to admin_path(current_admin)
 			else
 
-				flash[:message] = "Fields missing"
+				flash[:message] = "Keep Nags between 1 and 100 characters please."
 				redirect_to new_nag_path
 			end
 		end
