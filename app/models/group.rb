@@ -4,17 +4,17 @@ class Group < ApplicationRecord
 	has_many :nags, through: :tasks 
 	belongs_to :admin
 
-	delegate :users, :to => :tasks, :allow_nil => true
+
 	
 	scope :group_alpha, -> { order(:title) }
+
+	def self.user_groups
+		joins(:users).group(:user_id).order(:title)
+	end
 
 	validates :title, presence: :true
 
 end
 
 
-# class Groups < ActiveRecord::Base
-#   belongs_to :tasks
-
-#   delegate :user/admin, :to => :tasks, :allow_nil => true
-# end
+# Group.joins(:users).group('users.id = 4').order(:title)

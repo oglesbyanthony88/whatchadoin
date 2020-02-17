@@ -1,6 +1,8 @@
 <h1> Groups </h1>
 
 <br><br>
+<% if admin_logged_in? %>
+
 	<% if current_admin.groups.empty? %>
 		
 		<h1>You have no groups</h1>
@@ -13,10 +15,24 @@
 				<li><%= link_to 'Edit Group', edit_group_path(groups.id) %></li>
 		<% end %>
 		</ul>
+	<% end %>
+
+<%elsif logged_in?%>
+
+	<% if current_user.tasks.empty? %>
+		
+		<h1>You have no groups</h1>
+		
+	<% else %>
+		<ul>
+		<% @group.each do |groups| %>
+			<li><strong><%= groups.title %></strong></li>
+				<li><%= link_to 'Group Profile', user_group_path(current_user, groups.id) %></li>
+				<li><%= link_to 'Edit Group', edit_group_path(groups.id) %></li>
+		<% end %>
+		</ul>
+	<% end %>
 <% end %>
-
-
-
 
 
 

@@ -26,10 +26,14 @@ class GroupsController < ApplicationController
 
 	def index
 		if current_admin
-   		@group = current_admin.groups.group_alpha
-   	else
-   		@group = current_user.groups.group_alpha
-   	end
+			if params[:admin_id] && @group = find_groups
+  			find_groups.group_alpha
+			else
+				redirect_if_not_logged_in_admin
+			end
+		elsif current_user
+  			@group = Group.user_groups
+		end
   end
 
   

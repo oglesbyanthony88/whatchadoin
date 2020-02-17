@@ -41,7 +41,7 @@ end
 resources :users do
   resources :nags, only: [:new, :create, :update, :edit, :index]
   resources :tasks, only: [:index]
-  resources :groups, only: [:show]
+  resources :groups, only: [:show, :index]
 end
 
 
