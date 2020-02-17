@@ -15,6 +15,7 @@ class TasksController < ApplicationController
 			if @task.save
 				redirect_to admin_path(current_admin)
 			else
+				flash[:message] = "Keep Tasks between 1 and 100 characters please."
 				redirect_to new_task_path
 				#binding.pry
 			end

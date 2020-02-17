@@ -12,6 +12,10 @@ class Group < ApplicationRecord
 		joins(:users).group(:user_id).order(:title)
 	end
 
+	def self.admin_groups
+		joins(:admins).group(:admin_id).order(:title)
+	end
+
 	validates :title, presence: :true
 
 end

@@ -40,6 +40,10 @@ class ApplicationController < ActionController::Base
   def find_groups
 		@group = Group.find_by_id(params[:id])
 	end
+
+	def find_admin_groups
+		@group = Group.find_by_id(params[:admin_id])
+	end
   
   	
 

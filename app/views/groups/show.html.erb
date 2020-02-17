@@ -30,7 +30,7 @@
 <br><br>
 <div class="columns">
   <div class="column">
-<% @tasks = @group.tasks.order_by_due_date %>
+<% # @tasks = @group.tasks.order_by_due_date %>
 <% @tasks.each do |t| %>
 	<strong>Task: </strong><%= t.content %><br>
 	<strong>Issued to: </strong><%= t.user.name %><br>

@@ -12,6 +12,7 @@
 		<% @nags.each do |nag| %>
 
 			<li><%= nag.content %> - <%= nag.created_at %> - <%= nag.creator.try(:name) %></li>
+			<li><%= link_to "Edit Nag",  edit_admin_nag_path(current_admin, nag.id) %></li>
 
 		<% end %>
 	</ul>

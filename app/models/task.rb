@@ -4,7 +4,7 @@ class Task < ApplicationRecord
 	has_many :groups
 	has_many :nags
 
-	validates :content, presence: :true
+	validates :content, length: {in: 1..100}
 
 	scope :order_by_due_date, -> { order('duedate ASC') }
 	

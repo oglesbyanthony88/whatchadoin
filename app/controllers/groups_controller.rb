@@ -26,13 +26,13 @@ class GroupsController < ApplicationController
 
 	def index
 		if current_admin
-			if params[:admin_id] && @group = find_groups
-  			find_groups.group_alpha
-			else
-				redirect_if_not_logged_in_admin
-			end
+			if params[:admin_id] && @admin = Admin.find_by_id(params[:admin_id])
+  			@group = @admin.groups.group_alpha
+  		end
 		elsif current_user
   			@group = Group.user_groups
+  	else
+  		redirect_to root_path
 		end
   end
 
@@ -40,8 +40,8 @@ class GroupsController < ApplicationController
 
   def show
   	if current_admin
-  		if params[:group_id] && @group = find_groups
-  			find_groups
+  		if params[:group_id] && @admin = Admin.find_by_id(params[:admin_id])
+  			@group = find_groups
 			else
 				redirect_if_not_logged_in_admin
 				find_groups
@@ -56,8 +56,6 @@ class GroupsController < ApplicationController
 		end
 	end
 
-
-
 	def edit
     find_groups
   end
@@ -65,7 +63,7 @@ class GroupsController < ApplicationController
   def update
     find_groups
     if @group.update(group_params)
-      redirect_to '/groups'
+      redirect_to admin_groups_path(current_admin)
     else
     	flash[:message] = "Fields missing"
       redirect_to edit_group_path(@group)

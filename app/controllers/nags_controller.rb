@@ -12,7 +12,7 @@ class NagsController < ApplicationController
 		if current_user
 			@nag = current_user.nags.build(nag_params)
 			if @nag.save
-				redirect_to user_path(current_user)
+				redirect_to user_nags_path(current_user)
 			else
 				flash[:message] = "Keep Nags between 1 and 100 characters please."
 				render new_nag_path
@@ -20,7 +20,7 @@ class NagsController < ApplicationController
 		elsif current_admin
 			@nag = current_admin.nags.build(nag_params)
 			if @nag.save
-				redirect_to admin_path(current_admin)
+				redirect_to admin_nags_path(current_admin)
 			else
 
 				flash[:message] = "Keep Nags between 1 and 100 characters please."
@@ -52,9 +52,10 @@ class NagsController < ApplicationController
   def update
     @nag = Nag.find(params[:id])
     if @nag.update(nag_params)
-      redirect_to '/nags'
+      redirect_to admin_nags_path(current_admin) if current_admin
+      redirect_to user_nags_path(current_user) if current_user
     else
-    	flash[:message] = "Fields missing"
+    	flash[:message] = "Keep Nags between 1 and 100 characters please."
       render edit_nag_path(@nag)
     end
   end
