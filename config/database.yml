@@ -10,7 +10,7 @@ production:
   encoding: unicode
   pool: 5
   host: <%= ENV['DATABASE_HOST'] %>
-  database: production
+  database: db/development.sqlite3_production
 
 default: &default
   adapter: sqlite3
