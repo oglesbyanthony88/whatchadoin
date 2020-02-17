@@ -36,8 +36,7 @@
           <%= link_to("Home", root_path, :class => "navbar-item") %>
           <%= link_to("My Nags", user_nags_path(current_user), :class => "navbar-item") %>
           <%= link_to("Profile", user_path(current_user), :class => "navbar-item") %>
-          <%= link_to("Tasks", '/tasks', :class => "navbar-item") %>
-          <%= link_to("Groups", '/groups', :class => "navbar-item") %>
+          
       <% else %>
           <%= link_to("Home", root_path, :class => "navbar-item") %>
       <% end %>

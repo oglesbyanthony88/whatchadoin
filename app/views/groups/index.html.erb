@@ -1,7 +1,6 @@
-<h1> Admins Groups </h1>
+<h1> Groups </h1>
 
 <br><br>
-
 	<% if current_admin.groups.empty? %>
 		
 		<h1>You have no groups</h1>
@@ -14,7 +13,8 @@
 				<li><%= link_to 'Edit Group', edit_group_path(groups.id) %></li>
 		<% end %>
 		</ul>
-	<% end %>
+<% end %>
+
 
 
 
