@@ -11,7 +11,7 @@
 
   <body>
 
-    <nav class="navbar" role="navigation" aria-label="main navigation">
+    <nav class="navbar is-primary" role="navigation" aria-label="main navigation">
   <div class="navbar-brand">
     
    <!--    <img src="whatchadoin_logo.png" width="200" height="30"> -->
@@ -67,11 +67,11 @@
       <div class="navbar-item">
         <div class="buttons">
           <% if logged_in? || admin_logged_in?%>
-          <%= link_to("Logout", logout_path, :class => "button is-light", :method => "delete") %>
+          <%= link_to("Logout", logout_path, :class => "button is-dark", :method => "delete") %>
           <%else%>
-          <%= link_to("Sign Up", signup_path, :class => "button is-primary") %>
+          <%= link_to("Sign Up", signup_path, :class => "button is-light") %>
           
-          <%= link_to("Login As User", login_path, :class => "button is-light") %>
+          <%= link_to("Login As User", login_path, :class => "button is-info") %>
           <%= link_to("Login As Admin", '/adminlogin', :class => "button is-dark") %>
           <% end %>
         </div>

@@ -1,3 +1,6 @@
+<div class="container is-fluid">
+  <div class="notification">
+
 <h1><strong>Admin Login</strong></h1>
 <%= flash[:message]  if flash[:message]%>
 <%= form_for :admin do |f| %>
@@ -14,4 +17,7 @@
 <br>
 <div class="buttons">
 <%= link_to "Login In with Google", '/auth/google_oauth2', :class => "button is-dark"%>
+</div>
+
+</div>
 </div>

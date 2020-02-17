@@ -1,3 +1,6 @@
+<div class="container is-fluid">
+  <div class="notification">
+
 <% if admin_logged_in?%>
 <h1>This is <%= @user.name %>'s profile</h1>
 
@@ -24,6 +27,9 @@
 <%= link_to 'Edit Profile', edit_user_path(@user.id) %>
 
 <% end %>
+
+</div>
+</div>
 
 
 

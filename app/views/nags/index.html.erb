@@ -1,3 +1,6 @@
+<div class="container is-fluid">
+  <div class="notification">
+
 <h1>All Nags</h1>
 
 <% if admin_logged_in? %>
@@ -8,14 +11,15 @@
 
 	<% else %>
 
-  <ul>
+  
 		<% @nags.each do |nag| %>
-
-			<li><%= nag.content %> - <%= nag.created_at %> - <%= nag.creator.try(:name) %></li>
-			<li><%= link_to "Edit Nag",  edit_admin_nag_path(current_admin, nag.id) %></li>
+			<%= nag.content %> - <%= nag.created_at.to_formatted_s(:long_ordinal) %><br>
+			 - <strong><%= nag.creator.try(:name) %></strong><br>
+			<%= link_to "Edit Nag",  edit_admin_nag_path(current_admin, nag.id) %><br>
 
 		<% end %>
-	</ul>
+	
+	
 
 	<% end %>
 
@@ -29,7 +33,8 @@
   <ul>
 		<% @nags.each do |nag| %>
 
-			<li><%= nag.content %> - <%= nag.created_at %> - <%= nag.creator.try(:name) %></li>
+			<li><%= nag.content %> - <%= nag.created_at.to_formatted_s(:long_ordinal) %><br>
+			- <strong> <%= nag.creator.try(:name) %></strong></li>
 			<li><%= link_to "Edit Nag",  edit_user_nag_path(current_user, nag.id) %></li>
 
 		<% end %>
@@ -39,3 +44,6 @@
 	<% end %>
 
 <% end %>
+
+</div>
+</div>

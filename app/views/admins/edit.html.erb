@@ -1,8 +1,11 @@
+<div class="container is-fluid">
+  <div class="notification">
+
 <h3> Edit Profile </h3>
 
 <%= flash[:message]  if flash[:message]%>
 
-<%= form_for(@admin) do |f| %>
+<%= form_for(current_admin) do |f| %>
 
 <%= f.label :name %>
 <%= f.text_field :name%><br><br>
@@ -16,3 +19,6 @@
 <%= f.submit "Submit" %>
 
 <% end %>
+
+</div>
+</div>

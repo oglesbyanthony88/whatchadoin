@@ -1,3 +1,6 @@
+<div class="container is-fluid">
+  <div class="notification">
+
 <h1> Tasks </h1>
 
 <br><br>
@@ -8,14 +11,17 @@
 		
 	<% else %>
 
-			<li>
+			
 				<% @tasks.each do |tasks| %>
 				<strong>Task: </strong><%= tasks.content %><br>
 				<strong>Issued to: </strong><%= tasks.user.name %><br>
 				<strong>Due Date: </strong><%= tasks.duedate %><br>
 				<%= link_to 'Edit', edit_task_path(tasks.id) %><br>
 				<% end %>
-				</li><br><br>	
+				<br><br>	
 	<% end %>
+
+</div>
+</div>
 
 	

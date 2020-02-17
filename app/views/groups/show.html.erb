@@ -5,6 +5,9 @@
 <br><br>
 <div class="columns">
   <div class="column">
+  	<div class="container is-fluid">
+  <div class="notification">
+  	<strong><%= @group.title %>'s Tasks </strong><br><br>
 <% @tasks = @group.tasks.order_by_due_date %>  	
 <% @tasks.each do |t| %>
 	<strong>Task: </strong><%= t.content %><br>
@@ -14,7 +17,11 @@
 	<br><br>
 <% end %>
 </div>
+</div>
+</div>
 <div class="column">
+	<div class="container is-fluid">
+  <div class="notification">
 <strong><%= @group.title %>'s Nags </strong><br><br>
 <% @nags = @group.nags.date_reversed %>
 <% @nags.each do |n| %>
@@ -22,6 +29,10 @@
 <% end %>
 </div>
 </div>
+</div>
+</div>
+
+
 
 
 <% else %>
@@ -30,7 +41,10 @@
 <br><br>
 <div class="columns">
   <div class="column">
-<% # @tasks = @group.tasks.order_by_due_date %>
+  	<div class="container is-fluid">
+  <div class="notification">
+  	<strong><%= @group.title %>'s Tasks </strong><br><br>
+<% @tasks = @group.tasks.order_by_due_date %>
 <% @tasks.each do |t| %>
 	<strong>Task: </strong><%= t.content %><br>
 	<strong>Issued to: </strong><%= t.user.name %><br>
@@ -38,12 +52,19 @@
 	<br><br>
 <% end %>
 </div>
+</div>
+</div>
+
   <div class="column">
+  	<div class="container is-fluid">
+  <div class="notification">
   	<% @nags = @group.nags.date_reversed %>
   	<strong><%= @group.title %>'s Nags </strong><br><br>
 <% @nags.each do |n| %>
 	<li><%= n.content %> - <%= n.created_at %> - <%= n.creator.try(:name) %></li><br>
 <% end %>
+</div>
+</div>
 </div>
 </div>
 
