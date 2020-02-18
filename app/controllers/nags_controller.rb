@@ -64,11 +64,11 @@ class NagsController < ApplicationController
    	if current_admin
     	@nag = current_admin.nags.find(params[:id])
     	@nag.destroy
-    	redirect_to admin_path(current_admin)
+    	redirect_to admin_nags_path(current_admin)
     elsif current_user
     	@nag = current_user.nags.find(params[:id])
     	@nag.destroy
-    	redirect_to user_path(current_user)
+    	redirect_to user_nags_path(current_user)
     else 
     	redirect_to root_path
     end

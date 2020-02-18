@@ -9,7 +9,6 @@ class UsersController < ApplicationController
 	def create
 		if current_admin
 			@user = current_admin.users.build(user_params)
-			binding.pry
 			if @user.save
 				redirect_to admin_path(current_admin.id)
 			else
@@ -30,13 +29,14 @@ class UsersController < ApplicationController
 	end
 
 	def edit
-    @user = current_user
+    @user = User.find(params[:id])
   end
 
   def update
-    @user = current_user
+    @user = User.find(params[:id])
     if @user.update(user_params)
-      redirect_to @user
+      redirect_to user_path(current_user) if current_user
+      redirect_to admin_path(current_admin) if current_admin
     else
       redirect_to edit_user_path(@user)
     end

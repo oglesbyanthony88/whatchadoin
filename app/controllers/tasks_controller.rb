@@ -13,7 +13,7 @@ class TasksController < ApplicationController
 			@task = current_admin.tasks.build(task_params)
 			#binding.pry
 			if @task.save
-				redirect_to admin_path(current_admin)
+				redirect_to admin_tasks_path(current_admin)
 			else
 				flash[:message] = "Keep Tasks between 1 and 100 characters please."
 				redirect_to new_task_path
@@ -40,7 +40,7 @@ class TasksController < ApplicationController
   def update
     @task = Task.find(params[:id])
     if @task.update(task_params)
-      redirect_to '/tasks'
+      redirect_to admin_tasks_path(current_admin)
     else
       redirect_to edit_task_path(@task)
     end
@@ -50,7 +50,7 @@ class TasksController < ApplicationController
    	if current_admin
     	@task = current_admin.tasks.find(params[:id])
     	@task.destroy
-    	redirect_to admin_path(current_admin)
+    	redirect_to admin_tasks_path(current_admin)
     else 
     	redirect_to root_path
     end

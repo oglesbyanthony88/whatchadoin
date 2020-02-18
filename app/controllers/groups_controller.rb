@@ -13,10 +13,10 @@ class GroupsController < ApplicationController
 		if current_admin
 			@group = current_admin.groups.build(group_params)
 			if @group.save
-				redirect_to groups_path
+				redirect_to admin_groups_path(current_admin)
 			else
 				flash[:message] = "Fields missing"
-				redirect_to new_group_path
+				redirect_to new_admin_group_path(current_admin)
 			#binding.pry
 			end
 		else 
@@ -74,7 +74,7 @@ class GroupsController < ApplicationController
    	if current_admin
     	@group = current_admin.groups.find(params[:id])
     	@group.destroy
-    	redirect_to admin_path(current_admin)
+    	redirect_to admin_groups_path(current_admin)
     else 
     	redirect_to root_path
     end

@@ -28,8 +28,8 @@ class AdminsController < ApplicationController
 
   def update
     current_admin
-    if @admin.update(admin_params)
-      redirect_to @admin
+    if current_admin.update(admin_params)
+      redirect_to admin_path(current_admin)
     else
     	flash[:message] = "Fields missing"
       redirect_to edit_admin_path(current_admin)
@@ -38,8 +38,7 @@ class AdminsController < ApplicationController
 
   def destroy
    	if current_admin
-    	current_admin
-    	@admin.destroy
+    	current_admin.destroy
     	redirect_to root_path
     else 
     	redirect_to root_path
