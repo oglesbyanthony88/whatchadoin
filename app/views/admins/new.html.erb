@@ -19,6 +19,8 @@
 <%= f.submit "Sign Up", :class => "button is-dark" %>
 
 <% end %>
+
+<%= @admin.errors.full_messages.first if @admin.errors.any? %>
 <br>
 <div class="buttons">
 <%= link_to "Sign Up with Google", '/auth/google_oauth2', :class => "button is-dark" %>

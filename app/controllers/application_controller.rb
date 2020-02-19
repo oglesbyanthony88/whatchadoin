@@ -20,10 +20,6 @@ class ApplicationController < ActionController::Base
 	def redirect_if_not_logged_in
 		redirect_to '/' if !logged_in?
 	end
-	#Checks if user is_admin
-	def is_admin?
-    logged_in? ? current_user.is_admin : false
-  end
 
   def current_admin
   	@current_admin ||= Admin.find_by_id(session[:admin_id]) if session[:admin_id]

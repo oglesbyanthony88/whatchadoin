@@ -12,7 +12,7 @@ class UsersController < ApplicationController
 			if @user.save
 				redirect_to admin_path(current_admin.id)
 			else
-				redirect_to new_user_path
+				render new_user_path
 			end
 		else
 			redirect_to root_path

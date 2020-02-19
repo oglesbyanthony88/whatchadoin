@@ -7,6 +7,8 @@ class Admin < ApplicationRecord
 
 	validates :name, :email, presence: true
 
+	validates :email, uniqueness: true
+
 	def self.from_omniauth(auth)
     where(email: auth.info.email).first_or_initialize do |admin|
       admin.name = auth.info.name
