@@ -12,14 +12,6 @@ class User < ApplicationRecord
 	scope :alpha, -> { order(:name) }
 
 	
+
+	
 end
-
-# class User/Admin < ActiveRecord::Base
-#   has_many :tasks
-#   has_many :nags, :through => :tasks
-# end
-
-# class User/Admin < ActiveRecord::Base
-#   has_many :tasks
-#   has_many :groups, :through => :tasks
-# end

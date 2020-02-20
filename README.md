@@ -2,7 +2,7 @@
 
 # WhatchaDoin?
 
-WhatchaDoin v.1 is a project managment app that has Twitter like feature.
+WhatchaDoin v.1 is a project managment app that has a Twitter like feature.
 
 ### Installing
 
@@ -13,9 +13,9 @@ Then, clone the repository by taking the url and, in your terminal, typing
 
 Next, run `bundle install` to install all necessary gems included in the Gemfile.
 
-Next, run `rails db:migrate` and `rails db:seed`
+Next, run `rails db:migrate RAILS_ENV=test` and `rails db:seed RAILS_ENV=test`
 
-Finally, start your server by running the `rails s` command.
+Finally, start your server by running the `rails s -e test` command.
 
 **If you would like to test without signing up**
 * Admin email: prince@gmail.com
@@ -27,6 +27,7 @@ Finally, start your server by running the `rails s` command.
 ### Testing without Installing
 
 Go to https://stark-waters-67219.herokuapp.com/ and either sign up as Admin or use the above logins for quick testing.
+**Note:** At the moment the google sign up and login feature do not work in heroku.
 
 
 ## Built With

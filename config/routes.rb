@@ -18,6 +18,8 @@ Rails.application.routes.draw do
   #logout
   delete '/logout' => 'sessions#destroy'
 
+  get '/groups/:group_id/user-activity' => 'groups#user_activity'
+
 
   
 resources :users

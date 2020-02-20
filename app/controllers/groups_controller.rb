@@ -1,6 +1,4 @@
 class GroupsController < ApplicationController
-	 #See App Controller method
-
 	#creates new group
 	def new
 			@group = Group.new
@@ -17,7 +15,6 @@ class GroupsController < ApplicationController
 			else
 				flash[:message] = "Fields missing"
 				redirect_to new_admin_group_path(current_admin)
-			#binding.pry
 			end
 		else 
 			redirect_to root_path

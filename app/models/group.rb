@@ -12,9 +12,12 @@ class Group < ApplicationRecord
 		joins(:users).group(:user_id).order(:title)
 	end
 
+	def self.user_activity
+		joins(:users).group(:user_id).order('count(user.nag_id) desc')
+	end
+
 	validates :title, presence: :true
 
 end
-
 
 # Group.joins(:users).group('users.id = 4').order(:title)
