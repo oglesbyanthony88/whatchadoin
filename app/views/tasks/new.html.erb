@@ -13,7 +13,7 @@
 <br><br>
 
 <%= f.label "Group:" %>
-<%= f.collection_select(:group_id, Group.all, :id, :title) %>
+<%= f.collection_select(:group_id, current_admin.groups.all, :id, :title) %>
 
 <br><br>
 
