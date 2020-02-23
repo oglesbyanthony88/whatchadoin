@@ -12,10 +12,11 @@
 		
 	<% else %>
 		<ul>
-		<% @group.each do |groups| %>
-			<li><strong><%= groups.title %></strong></li>
-				<li><%= link_to 'Group Profile', admin_group_path(current_admin, groups.id) %></li>
-				<li><%= link_to 'Edit Group', edit_group_path(groups.id) %></li>
+		<% @group.each do |g| %>
+			<li><strong><%= g.title %></strong></li>
+				<li><%= link_to 'Group Profile', admin_group_path(current_admin, g.id) %></li>
+				<li><%= link_to 'Edit Group', edit_group_path(g.id) %></li>
+				<li><%= link_to 'Add Task', new_group_task_path(g.id) %></li>
 		<% end %>
 		</ul>
 	<% end %>
@@ -28,9 +29,9 @@
 		
 	<% else %>
 		<ul>
-		<% @group.each do |groups| %>
-			<li><strong><%= groups.title %></strong></li>
-				<li><%= link_to 'Group Profile', user_group_path(current_user, groups.id) %></li>
+		<% @group.each do |g| %>
+			<li><strong><%= g.title %></strong></li>
+				<li><%= link_to 'Group Profile', user_group_path(current_user, g.id) %></li>
 		<% end %>
 		</ul>
 	<% end %>

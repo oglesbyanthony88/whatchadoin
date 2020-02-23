@@ -29,7 +29,7 @@ resources :groups
 resources :admins
 
 resources :groups do
-  resources :tasks, only: [:index]
+  resources :tasks, only: [:index, :new, :create]
   resources :nags, only: [:index]
 end
 
