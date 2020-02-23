@@ -18,7 +18,7 @@ Rails.application.routes.draw do
   #logout
   delete '/logout' => 'sessions#destroy'
 
-  get '/groups/:group_id/user-activity' => 'groups#user_activity'
+  get '/admins/:admin_id/user-activity' => 'admins#user_activity'
 
 
   

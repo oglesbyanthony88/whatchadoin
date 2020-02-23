@@ -9,6 +9,7 @@ class Admin < ApplicationRecord
 
 	validates :email, uniqueness: true
 
+
 	def self.from_omniauth(auth)
     where(email: auth.info.email).first_or_initialize do |admin|
       admin.name = auth.info.name
@@ -19,13 +20,3 @@ class Admin < ApplicationRecord
 
 	
 end
-# class User/Admin < ActiveRecord::Base
-#   has_many :tasks
-#   has_many :nags, :through => :tasks
-# end
-
-
-# class User/Admin < ActiveRecord::Base
-#   has_many :tasks
-#   has_many :groups, :through => :tasks
-# end

@@ -11,7 +11,4 @@ class User < ApplicationRecord
 
 	scope :alpha, -> { order(:name) }
 
-	
-
-	
 end

@@ -9,11 +9,7 @@ class Group < ApplicationRecord
 	scope :group_alpha, -> { order(:title) }
 
 	def self.user_groups
-		joins(:users).group(:user_id).order(:title)
-	end
-
-	def self.user_activity
-		joins(:users).group(:user_id).order('count(user.nag_id) desc')
+		joins(:users).group(:group_id).order(:title)
 	end
 
 	validates :title, presence: :true

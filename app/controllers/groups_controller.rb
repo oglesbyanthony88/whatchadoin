@@ -22,12 +22,10 @@ class GroupsController < ApplicationController
 	end
 
 	def index
-		if current_admin
-			if params[:admin_id] && @admin = Admin.find_by_id(params[:admin_id])
+		if current_admin && params[:admin_id] && @admin = Admin.find_by_id(params[:admin_id])
   			@group = @admin.groups.group_alpha
-  		end
 		elsif current_user
-  			@group = Group.user_groups
+  		@group = current_user.groups.group_alpha
   	else
   		redirect_to root_path
 		end
